@@ -9,10 +9,10 @@ menus before running. Use a writable directory such as Downloads.
 Run from PowerShell in a writable directory:
 
 ```powershell
-npm.cmd exec --yes --ignore-scripts --package "https://github.com/lumamax/supergpt-windows-npm-pilot/releases/download/v0.5.10-lab/supergpt-windows-x64-0.5.10-lab.tgz" -- supergpt install
+npm.cmd exec --yes --ignore-scripts --package "https://raw.githubusercontent.com/lumamax/supergpt-windows-npm-pilot/v0.5.10-lab/dist/supergpt-windows-x64-0.5.10-lab.tgz" -- supergpt install
 ```
 
-The release also provides the archive and its SHA-256 for offline use.
+The tagged repository includes the archive and its SHA-256 under `dist/` for offline use.
 From the directory with the downloaded file, run:
 
 ```powershell
@@ -39,8 +39,7 @@ This pilot uses the same Store/Core compatibility checks as the desktop
 product. It only installs into a profile without an active SuperGPT
 installation. It is a LAB build and has no production update channel.
 
-## Repack from this repository
+## Repack from the tagged archive
 
-Place the matching build's `SuperGPT.Installation.module` and `module.json`
-under `native/`, then run `npm pack --ignore-scripts`. The release includes
-the exact runtime bytes and metadata. The module metadata identifies the native engine used for this build.
+Extract `package/native/` from the tagged archive into `native/`, then run
+`npm pack --ignore-scripts`. The archive in `dist/` includes the exact runtime bytes and metadata. The module metadata identifies the native engine used for this build.
