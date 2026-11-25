@@ -1,4 +1,4 @@
-# SuperGPT for Windows 0.5.10 LAB
+# SuperGPT for Windows 0.5.11 LAB
 
 This npm package performs the first per-user installation of SuperGPT. It
 requires Windows x64, Node.js 22 or later with npm and the official ChatGPT/Codex
@@ -9,14 +9,16 @@ menus before running. Use a writable directory such as Downloads.
 Run from PowerShell in a writable directory:
 
 ```powershell
-npm.cmd exec --yes --ignore-scripts --package "https://raw.githubusercontent.com/lumamax/supergpt-windows-npm-pilot/v0.5.10-lab/dist/supergpt-windows-x64-0.5.10-lab.tgz" -- supergpt install
+npm.cmd exec --yes --ignore-scripts --package "https://raw.githubusercontent.com/lumamax/supergpt-windows-npm-pilot/v0.5.11-lab/dist/supergpt-windows-x64-0.5.11-lab.tgz" -- supergpt install
 ```
 
 The tagged repository includes the archive and its SHA-256 under `dist/` for offline use.
+The pilot retains the per-user Store integration and uses the validated Node shipped in the package.
+Windows 10/11 x64 installation and native live response acceptance remain separate from the npm package check.
 From the directory with the downloaded file, run:
 
 ```powershell
-npm.cmd exec --offline --yes --ignore-scripts --package ".\supergpt-windows-x64-0.5.10-lab.tgz" -- supergpt install
+npm.cmd exec --offline --yes --ignore-scripts --package ".\supergpt-windows-x64-0.5.11-lab.tgz" -- supergpt install
 ```
 
 Use `install --no-launch` to install and leave the apps closed. The package
@@ -32,8 +34,8 @@ contents, process arguments and raw exception messages. It does not upload
 anything. If npm stops before starting SuperGPT, report the npm error.
 
 `installed` means the SuperGPT transaction committed. The launch result is
-reported separately. If prompted, sign in from the Luma tray menu and verify
-a Luma response in ChatGPT/Codex.
+reported separately. When running in a restricted agent session, open the installed SuperGPT shortcut from the desktop
+if launch is pending or refused. If prompted, sign in from the Luma tray menu and verify a Luma response.
 
 This pilot uses the same Store/Core compatibility checks as the desktop
 product. It only installs into a profile without an active SuperGPT
