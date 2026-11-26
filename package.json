@@ -1,6 +1,6 @@
 {
   "name": "@lumacloud/supergpt-windows-pilot",
-  "version": "0.5.11",
+  "version": "0.5.12",
   "private": true,
   "description": "SuperGPT first installation into the current Windows profile",
   "bin": {

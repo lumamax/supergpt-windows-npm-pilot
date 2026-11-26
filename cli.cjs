@@ -12,6 +12,15 @@ const nativeSchema = 'luma.windows.npm-native-install.v1';
 const hostErrorSchema = 'luma.windows.npm-host-error.v1';
 const reportSchema = 'luma.windows.npm-install-report.v1';
 const outputLimit = 64 * 1024;
+const guidance = new Map([
+  ['ORIGINAL_PACKAGE_MISSING', 'Install the official ChatGPT app from https://chatgpt.com/download/ in this Windows profile, then run this command again.'],
+  ['INSTALL_AS_INVOKER_REQUIRED', 'Run this command from a regular PowerShell window in the Windows profile where you use ChatGPT.'],
+  ['INSTALL_CLOSE_ORIGINAL_APP_REQUIRED', 'Quit ChatGPT and Codex in this Windows profile, then run this command again.'],
+  ['INSTALL_CLOSE_OWN_COMPONENTS_REQUIRED', 'Quit SuperGPT from the tray, then run this command again.'],
+  ['INSTALL_GENERATION_CHANGED_RETRY', 'This command needs a fresh SuperGPT profile. For an existing installation, use the SuperGPT tray updater.'],
+  ['INSTALL_CODE_ALREADY_PRESENT', 'SuperGPT files already exist in this profile. Use the existing installation or its repair flow.'],
+  ['ORIGINAL_PACKAGE_VOLUME_REFUSED', 'Windows could not verify the Microsoft Store volume for ChatGPT. Check that the drive is available.'],
+]);
 
 function failure(code) {
   return Object.assign(new Error(code), { reportCode: code });
@@ -137,6 +146,8 @@ async function install(launch) {
   report.finishedAt = new Date().toISOString();
   await saveResult(reportPath, report);
   process.stdout.write(`SuperGPT ${version}: ${report.status}${report.code ? ' (' + report.code + ')' : ''}\n`);
+  const next = guidance.get(report.code);
+  if (next) process.stdout.write(next + '\n');
   if (report.status !== 'installed') process.exitCode = 1;
 }
 

@@ -1,0 +1,1 @@
+1c0b63a2e93c615323bf08045cfc3f6d61a9000641864b1f369e3fe6065dd8af  supergpt-windows-x64-0.5.12-lab.tgz
